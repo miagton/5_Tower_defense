@@ -4,30 +4,48 @@ using UnityEngine;
 
 [ExecuteInEditMode]
 [SelectionBase]
+[RequireComponent(typeof(WayPoint))]
 public class CubeEditor : MonoBehaviour
 {   
-    [SerializeField] [Range(1f, 20f)] float gridSize=10f;
+   
 
-    TextMesh textMesh;
+    
+  
+    WayPoint wayPoint;
 
     private void Awake()
     {
-        textMesh = GetComponentInChildren<TextMesh>();
-        
+      
+        wayPoint = GetComponent<WayPoint>();
+
+
     }
 
     void Update()
     {
-        Vector3 snapPosition;
-      
-        snapPosition.x = Mathf.RoundToInt(transform.position.x / gridSize) * gridSize;//Rounds inner math then multipl by 10 to get world coordinate back
-        snapPosition.z = Mathf.RoundToInt(transform.position.z / gridSize) * gridSize;
-        transform.position = new Vector3(snapPosition.x, 0, snapPosition.z);//new Vector3(snapPosition.x, 0, snapPosition.z);
+        SnapToGrid();
 
-        string labelText = snapPosition.x / gridSize + "," + snapPosition.z / gridSize;//label  to get not exact coordinates but proper label
+        UpdateLabel();
+    }
+
+    private void SnapToGrid()
+    {
+       // int gridSize = wayPoint.GetGridSize();
+        
+        transform.position = new Vector3(
+            wayPoint.GetGridPos().x,
+            0,
+            wayPoint.GetGridPos().y
+            );
+    }
+
+    private void UpdateLabel()
+    {
+        TextMesh textMesh = GetComponentInChildren<TextMesh>();
+        int gridSize = wayPoint.GetGridSize();
+        string labelText = wayPoint.GetGridPos().x / gridSize + "," + wayPoint.GetGridPos().y / gridSize;//label  to get not exact coordinates but proper label
         textMesh.text = labelText;
         gameObject.name = labelText;
     }
 
-   
 }
