@@ -10,7 +10,7 @@ public class PathFinder : MonoBehaviour
    
     Dictionary<Vector2Int, WayPoint> worldGrid = new Dictionary<Vector2Int, WayPoint>();
     Queue<WayPoint> queue = new Queue<WayPoint>();
-    
+    List<WayPoint> path = new List<WayPoint>() ;
     bool isRunning = true;
     WayPoint searchCenter;//to track current search center
 
@@ -22,17 +22,34 @@ public class PathFinder : MonoBehaviour
         Vector2Int.down,
         Vector2Int.left,
     };
-
-
-    private void Start()
+    public List<WayPoint> GetPath()
     {
         LoadBlocks();
         ColorStartAndEnd();
-        PathFind();
-       
+        BreadthFirstSearch();
+        FormPath();
+        return path;
     }
 
-    private void PathFind()
+    
+
+    private void FormPath()
+    {
+        path.Add(endPoint);
+        WayPoint previous = endPoint.exploredFrom;
+        while(previous!= startPoint)
+        {
+            //add intermediate waypoint
+            path.Add(previous);
+            previous = previous.exploredFrom;
+        }
+        //add start waypoint
+        path.Add(startPoint);
+        //reverse the list
+        path.Reverse();
+    }
+
+    private void BreadthFirstSearch()
     {
         queue.Enqueue(startPoint);
         while(queue.Count > 0&& isRunning)
@@ -62,14 +79,11 @@ public class PathFinder : MonoBehaviour
         foreach(var direction in directions)
         {
             Vector2Int explorationCoordinates = searchCenter.GetGridPos() + direction;
-            try
+            if(worldGrid.ContainsKey(explorationCoordinates))
             {
                 QueueNewMember(explorationCoordinates);
             }
-            catch
-            {
-                //donothing
-            }
+           
            
         }
     }
@@ -92,6 +106,7 @@ public class PathFinder : MonoBehaviour
 
     private void ColorStartAndEnd()
     {
+       //consider moving out
         startPoint.SetTopColor(Color.blue);
         endPoint.SetTopColor(Color.red);
     }
@@ -108,11 +123,11 @@ public class PathFinder : MonoBehaviour
             else
             { 
                 worldGrid.Add(gridPos, wayPoint);
-               // if(wayPoint== start) { wayPoint.SetTopColor(Color.magenta); }
-               // if (wayPoint == end) { wayPoint.SetTopColor(Color.blue); }
+               
               
             } 
         }
         
     }
+    
 }
