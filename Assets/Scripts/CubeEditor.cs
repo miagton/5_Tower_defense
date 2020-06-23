@@ -6,11 +6,11 @@ using UnityEngine;
 [SelectionBase]
 [RequireComponent(typeof(WayPoint))]
 public class CubeEditor : MonoBehaviour
-{   
+{
+
+
    
 
-    
-  
     WayPoint wayPoint;
 
     private void Awake()
