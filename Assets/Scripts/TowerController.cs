@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class TowerController : MonoBehaviour
 {
+    [Tooltip("Range on wich Tower attacks")]
+    [SerializeField] float towerRange = 30f;
+    
     [SerializeField] Transform objectToSpin;
     [SerializeField] Transform objToLookAt;
     [SerializeField] GameObject gun;
@@ -22,7 +25,7 @@ public class TowerController : MonoBehaviour
             EnableEmission(false);
             return;
         }
-        if(Vector3.Distance(transform.position,objToLookAt.position)<=30f)
+        if(Vector3.Distance(transform.position,objToLookAt.position)<= towerRange)
         {
             objectToSpin.LookAt(objToLookAt);
             EnableEmission(true);
