@@ -29,7 +29,7 @@ public class PathFinder : MonoBehaviour
      
         {
             LoadBlocks();
-            ColorStartAndEnd();
+           
             BreadthFirstSearch();
             FormPath();
         }
@@ -110,12 +110,7 @@ public class PathFinder : MonoBehaviour
         }
     }
 
-    private void ColorStartAndEnd()
-    {
-       //consider moving out
-        startPoint.SetTopColor(Color.blue);
-        endPoint.SetTopColor(Color.red);
-    }
+    
 
     private void LoadBlocks()
     {

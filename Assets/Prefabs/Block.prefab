@@ -79,7 +79,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 332798152852709874}
-  m_Text: 8,-1
+  m_Text: 0,0
   m_OffsetZ: 0
   m_CharacterSize: 3
   m_LineSpacing: 1
@@ -104,8 +104,9 @@ GameObject:
   - component: {fileID: 2418758666375014812}
   - component: {fileID: 7011750804767386660}
   - component: {fileID: 7348391684166593128}
+  - component: {fileID: 2579133153193307816}
   m_Layer: 0
-  m_Name: 8,-1
+  m_Name: Block
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -118,7 +119,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5940681135899235861}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 80, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -154,6 +155,19 @@ MonoBehaviour:
   exploredFrom: {fileID: 0}
   isExplored: 0
   exploredColor: {r: 0.9150943, g: 0.7251239, b: 0.18560876, a: 0}
+--- !u!65 &2579133153193307816
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5940681135899235861}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: -5, z: 0}
 --- !u!1 &6702036159415977678
 GameObject:
   m_ObjectHideFlags: 0
