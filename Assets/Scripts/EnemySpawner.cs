@@ -5,7 +5,8 @@ using UnityEngine.PlayerLoop;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] float intervalBetweenSpawning = 3f;
+    
+    [Range(0.1f,10f)][SerializeField] float intervalBetweenSpawning = 3f;
     [SerializeField] int amountOfEnemies = 15;
     [SerializeField] Enemy enemyToSpawn = null;
     void Start()

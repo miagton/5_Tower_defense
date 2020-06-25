@@ -51,7 +51,7 @@ MonoBehaviour:
   deathEffect: {fileID: 6378254251037514928, guid: 356ffa2f0efddbd41a2e83c0bd30f212,
     type: 3}
   hitsToDie: 6
-  parent: {fileID: 0}
+  parent: {fileID: 1113708241247313952, guid: a1b8db1699857fd40b34e93e0d86c42a, type: 3}
 --- !u!136 &2783256450897482719
 CapsuleCollider:
   m_ObjectHideFlags: 0

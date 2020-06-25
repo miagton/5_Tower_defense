@@ -13,15 +13,16 @@ public class Enemy : MonoBehaviour
     [SerializeField] GameObject hitEffect = null;
     [SerializeField] GameObject deathEffect = null;
     [SerializeField] int hitsToDie = 6;
-    [SerializeField] Transform parent;
     
+    Transform parent;
     Vector3 startPosition;
 
     void Start()
     {
-        startPosition = transform.position;
-        PathFinder pathFinder = FindObjectOfType<PathFinder>();
-        var path = pathFinder.GetPath();
+         parent = FindObjectOfType<Parent>().transform;
+         startPosition = transform.position;
+         PathFinder pathFinder = FindObjectOfType<PathFinder>();
+         var path = pathFinder.GetPath();
          StartCoroutine(FollowPath(path));
     }
 
@@ -53,19 +54,18 @@ public class Enemy : MonoBehaviour
     {
         if (hitEffect != null)
         {
-            GameObject fx = Instantiate(hitEffect, transform.position, Quaternion.identity);
-            fx.transform.parent = parent;
+            GameObject fx1 = Instantiate(hitEffect, transform.position, Quaternion.identity);
+            fx1.transform.parent = parent;
         }
         hitsToDie--;
-        print(hitsToDie);
-
+       
     }
     private void ProccesDeath()
     {
         if (deathEffect != null)
         {
-            GameObject fx = Instantiate(deathEffect, transform.position, Quaternion.identity);
-            fx.transform.parent = parent;
+            GameObject fx2 = Instantiate(deathEffect, transform.position, Quaternion.identity);
+            fx2.transform.parent = parent;
         }
         Destroy(gameObject);
     }
