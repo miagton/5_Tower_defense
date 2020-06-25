@@ -14,7 +14,7 @@ public class PathFinder : MonoBehaviour
     bool isRunning = true;
     WayPoint searchCenter;//to track current search center
 
-   // bool pathCreated = false;
+ 
     Vector2Int[] directions =
 
     {
@@ -41,21 +41,30 @@ public class PathFinder : MonoBehaviour
 
     private void FormPath()
     {
-        path.Add(endPoint);
+        
+        
+        SetAsPath(endPoint);
+        
         WayPoint previous = endPoint.exploredFrom;
         while(previous!= startPoint)
         {
             //add intermediate waypoint
-            path.Add(previous);
+                      
+            SetAsPath(previous);
             previous = previous.exploredFrom;
         }
        
-        path.Add(startPoint);
        
+        SetAsPath(startPoint);
         path.Reverse();
-       // pathCreated = true;
+      
     }
 
+    void SetAsPath(WayPoint way)
+    {
+        path.Add(way);
+        way.isPlacable = false;
+    }
     private void BreadthFirstSearch()
     {
         queue.Enqueue(startPoint);
