@@ -14,6 +14,7 @@ public class PathFinder : MonoBehaviour
     bool isRunning = true;
     WayPoint searchCenter;//to track current search center
 
+   // bool pathCreated = false;
     Vector2Int[] directions =
 
     {
@@ -24,11 +25,16 @@ public class PathFinder : MonoBehaviour
     };
     public List<WayPoint> GetPath()
     {
-        LoadBlocks();
-        ColorStartAndEnd();
-        BreadthFirstSearch();
-        FormPath();
-        return path;
+        if (path.Count==0) 
+     
+        {
+            LoadBlocks();
+            ColorStartAndEnd();
+            BreadthFirstSearch();
+            FormPath();
+        }
+            return path;
+       
     }
 
     
@@ -43,10 +49,11 @@ public class PathFinder : MonoBehaviour
             path.Add(previous);
             previous = previous.exploredFrom;
         }
-        //add start waypoint
+       
         path.Add(startPoint);
-        //reverse the list
+       
         path.Reverse();
+       // pathCreated = true;
     }
 
     private void BreadthFirstSearch()
@@ -60,8 +67,7 @@ public class PathFinder : MonoBehaviour
             StopIfEndFounded();
             ExploreNearBlocks();
         }
-        //todo make up path
-        print("finish pathfinding?");
+       
     }
 
     private void StopIfEndFounded()

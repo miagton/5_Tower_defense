@@ -1886,6 +1886,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 884416134}
+  - component: {fileID: 884416135}
   m_Layer: 0
   m_Name: Enemies
   m_TagString: Untagged
@@ -1908,6 +1909,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &884416135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 884416133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8150d9405d30ee9459695da91cb2bf99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intervalBetweenSpawning: 3
+  amountOfEnemies: 15
+  enemyToSpawn: {fileID: 828237708, guid: e15f383176004b547a3f5d2bd9043c64, type: 3}
 --- !u!1001 &901721748
 PrefabInstance:
   m_ObjectHideFlags: 0

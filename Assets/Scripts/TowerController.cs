@@ -25,7 +25,7 @@ public class TowerController : MonoBehaviour
             EnableEmission(false);
             return;
         }
-        if(Vector3.Distance(transform.position,objToLookAt.position)<= towerRange)
+        if(Vector3.Distance(transform.position,objToLookAt.position)<=towerRange)
         {
             objectToSpin.LookAt(objToLookAt);
             EnableEmission(true);
