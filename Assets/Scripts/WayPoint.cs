@@ -27,7 +27,7 @@ public class WayPoint : MonoBehaviour
     
      void OnMouseOver()
      {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0)&& isPlacable)
         {
             Debug.Log("clicked on:"+gameObject.name);
         }
@@ -35,6 +35,8 @@ public class WayPoint : MonoBehaviour
      }
     private void OnMouseDown()
     {
+        if(isPlacable)
         Debug.Log("OnMouseDown used on:" + gameObject.name);
     }
+    
 }
