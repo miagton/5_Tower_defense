@@ -154,7 +154,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   exploredFrom: {fileID: 0}
   isExplored: 0
-  exploredColor: {r: 0.9150943, g: 0.7251239, b: 0.18560876, a: 0}
+  isPlacable: 1
+  tower: {fileID: 3194912608713557005, guid: 7adc58dbf3fe69241808e595985a06e6, type: 3}
+  parentForTowers: {fileID: 0}
 --- !u!65 &2579133153193307816
 BoxCollider:
   m_ObjectHideFlags: 0

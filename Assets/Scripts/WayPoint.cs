@@ -9,8 +9,10 @@ public class WayPoint : MonoBehaviour
     public bool isExplored = false;
     public bool isPlacable = true;
 
+   
     
     const int gridSize = 10;
+
     
     public int GetGridSize()
     {
@@ -25,18 +27,7 @@ public class WayPoint : MonoBehaviour
     }
 
     
-     void OnMouseOver()
-     {
-        if (Input.GetMouseButtonDown(0)&& isPlacable)
-        {
-            Debug.Log("clicked on:"+gameObject.name);
-        }
-        
-     }
-    private void OnMouseDown()
-    {
-        if(isPlacable)
-        Debug.Log("OnMouseDown used on:" + gameObject.name);
-    }
+  
+   
     
 }
