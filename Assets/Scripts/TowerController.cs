@@ -9,7 +9,7 @@ public class TowerController : MonoBehaviour
     [Tooltip("Range on wich Tower attacks")]
     [SerializeField] float towerRange = 30f;
     [SerializeField] Transform objectToSpin;
-    [SerializeField] GameObject gun;
+    [SerializeField] GameObject[] guns;
     //state
     Transform targetEnemy;
 
@@ -78,7 +78,11 @@ public class TowerController : MonoBehaviour
     private void EnableEmission(bool IsActive)
     {
        
+       foreach(var gun in guns)
+        {
         var gunEmmision = gun.GetComponent<ParticleSystem>().emission;
         gunEmmision.enabled = IsActive;
+
+        }
     }
 }

@@ -52,23 +52,37 @@ public class Enemy : MonoBehaviour
 
     private void ProcessHit()
     {
+        hitsToDie--;
         if (hitEffect != null)
         {
-            GameObject fx1 = Instantiate(hitEffect, transform.position, Quaternion.identity);
-            fx1.transform.parent = parent;
+            
+            CreateEffect(hitEffect);
         }
-        hitsToDie--;
        
     }
     private void ProccesDeath()
     {
         if (deathEffect != null)
         {
-            GameObject fx2 = Instantiate(deathEffect, transform.position, Quaternion.identity);
-            fx2.transform.parent = parent;
+           
+            CreateEffect(deathEffect);
         }
-        Destroy(gameObject);
+         Destroy(gameObject);
+       // ResetEnemy();
     }
 
-   
+   void CreateEffect(GameObject effect)
+    {
+        GameObject fx = Instantiate(effect, transform.position, Quaternion.identity);
+        fx.transform.parent = parent;
+       
+    }
+
+    IEnumerator ResetEnemy()
+    {
+        transform.position = startPosition;
+        gameObject.SetActive(false);
+        yield return new WaitForSeconds(2f);
+        gameObject.SetActive(true);
+    }
 }

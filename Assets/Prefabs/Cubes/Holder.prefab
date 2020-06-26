@@ -72,7 +72,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8441e30026cee54eb9e6b2bb3774dd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tower: {fileID: 3194912608713557005, guid: 7adc58dbf3fe69241808e595985a06e6, type: 3}
+  towers:
+  - {fileID: 3194912608713557005, guid: 7adc58dbf3fe69241808e595985a06e6, type: 3}
+  - {fileID: 374507760486189425, guid: 5e8a08808c566644db7d3ae9ae172342, type: 3}
+  - {fileID: 3760827833212126234, guid: 6e70e9aa8bccf84489afaa6a56b60e2f, type: 3}
 --- !u!1001 &6286454429333576668
 PrefabInstance:
   m_ObjectHideFlags: 0
