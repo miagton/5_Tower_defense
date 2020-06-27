@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class TowerController : MonoBehaviour
@@ -10,10 +11,28 @@ public class TowerController : MonoBehaviour
     [SerializeField] float towerRange = 30f;
     [SerializeField] Transform objectToSpin;
     [SerializeField] GameObject[] guns;
+    [Tooltip("Amount of particles per second")]
+    [SerializeField] float fireRate = 3f;
     //state
     Transform targetEnemy;
 
     public TowerHolder baseHolder;//what the tower is tsanding on
+
+    private void Start()
+    {
+        SetGunsFireRate();
+    }
+
+    private void SetGunsFireRate()
+    {
+        foreach (var gun in guns)
+        {
+            var shootSpeed = gun.GetComponent<ParticleSystem>().emission;
+
+            shootSpeed.rateOverTime = fireRate;
+        }
+    }
+
     void Update()
     {
         SetTargetEnemy();

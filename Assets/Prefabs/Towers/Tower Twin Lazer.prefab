@@ -4826,6 +4826,11 @@ PrefabInstance:
       propertyPath: guns.Array.data[1]
       value: 
       objectReference: {fileID: 542845604685895699}
+    - target: {fileID: 3194912608713557005, guid: 7adc58dbf3fe69241808e595985a06e6,
+        type: 3}
+      propertyPath: fireRate
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3194912608713557007, guid: 7adc58dbf3fe69241808e595985a06e6,
         type: 3}
       propertyPath: m_Name

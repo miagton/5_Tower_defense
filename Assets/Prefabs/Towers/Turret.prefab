@@ -145,6 +145,8 @@ MonoBehaviour:
   - {fileID: 9177836888957197831}
   - {fileID: 8194955519962864434}
   - {fileID: 3658955633041499757}
+  fireRate: 1
+  baseHolder: {fileID: 0}
 --- !u!1 &2233890879971628142
 GameObject:
   m_ObjectHideFlags: 0

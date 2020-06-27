@@ -16,14 +16,21 @@ public class Enemy : MonoBehaviour
     [SerializeField] GameObject endEffect = null;
 
     [SerializeField] int hitsToDie = 6;
-    
+
+    [SerializeField] AudioClip hitSound;
+    [SerializeField] AudioClip deathSound;
+
+    AudioSource audioSource;
     Transform parent;
     Vector3 startPosition;
+    bool pathCompleted = false;
 
     void Start()
     {
+         audioSource = GetComponent<AudioSource>();
          parent = FindObjectOfType<Parent>().transform;
          startPosition = transform.position;
+         
          PathFinder pathFinder = FindObjectOfType<PathFinder>();
          var path = pathFinder.GetPath();
          StartCoroutine(FollowPath(path));
@@ -41,6 +48,7 @@ public class Enemy : MonoBehaviour
             
             yield return new WaitForSeconds(dwellingTime);
         }
+        pathCompleted = true;
         SelfDestroy();
 
         
@@ -49,12 +57,15 @@ public class Enemy : MonoBehaviour
 
     private void SelfDestroy()
     {
-        if (endEffect != null)
+        if (endEffect != null&& pathCompleted)
         {
-            GameObject fx = Instantiate(endEffect, transform.position, Quaternion.identity);
-            fx.transform.parent = parent;
+            CreateEffect(endEffect);
+            Destroy(this.gameObject);
         }
-        Destroy(this.gameObject);
+        else
+        {
+            ProccesDeath();
+        }
     }
 
     private void OnParticleCollision(GameObject other)
@@ -62,7 +73,8 @@ public class Enemy : MonoBehaviour
         ProcessHit();
         if (hitsToDie <= 0)
         {
-            ProccesDeath();
+            SelfDestroy();
+           
         }
     }
    
@@ -70,6 +82,7 @@ public class Enemy : MonoBehaviour
     private void ProcessHit()
     {
         hitsToDie--;
+        audioSource.PlayOneShot(hitSound);
         if (hitEffect != null)
         {
             
@@ -79,12 +92,14 @@ public class Enemy : MonoBehaviour
     }
     private void ProccesDeath()
     {
+        audioSource.PlayOneShot(deathSound);
+        
         if (deathEffect != null)
         {
            
             CreateEffect(deathEffect);
         }
-         Destroy(gameObject);
+         Destroy(gameObject,0.4f);
        // ResetEnemy();
     }
 
