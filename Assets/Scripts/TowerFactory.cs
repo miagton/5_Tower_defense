@@ -27,17 +27,18 @@ public class TowerFactory : MonoBehaviour
         }
     }
 
-    private  void MoveExistingTower(TowerHolder baseHolder)
+    private  void MoveExistingTower(TowerHolder newBaseHolder)
     {
         //take bottom tower off que
        var oldTower= towerControllers.Dequeue();
         //set the placable flags
-        oldTower.baseHolder.isOccupiedByTower = false;
+        oldTower.baseHolder.isOccupiedByTower = false;  
        // baseHolder.isOccupiedByTower = false;
         //set the  base towerholder
-        oldTower.baseHolder = baseHolder;
+        oldTower.baseHolder = newBaseHolder;
+        newBaseHolder.isOccupiedByTower = true;
         //move 
-        oldTower.transform.position = baseHolder.transform.position;
+        oldTower.transform.position = newBaseHolder.transform.position;
         //set old tower to the top of the queue
         towerControllers.Enqueue(oldTower);
     }

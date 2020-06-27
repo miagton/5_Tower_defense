@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 4907987154143992}
   - component: {fileID: 54660159372924652}
   - component: {fileID: 996329861969663602}
+  - component: {fileID: 4322438173196248895}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61,12 +62,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3fcd2bbd338d6042a38b7153a29afe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dwellingTime: 1
+  dwellingTime: 0.2
   hitEffect: {fileID: 8681779306352170300, guid: 9df4324be4283a34fa04ea2c920e8897,
     type: 3}
   deathEffect: {fileID: 6378254251037514928, guid: 356ffa2f0efddbd41a2e83c0bd30f212,
     type: 3}
+  endEffect: {fileID: 6378254251037514928, guid: 172fc78777bad4d42af8b7afa5d8b2a2,
+    type: 3}
   hitsToDie: 6
+--- !u!65 &4322438173196248895
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1289942997295908}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 7.71, y: 8.87, z: 5.9}
+  m_Center: {x: 0, y: 4.3, z: 0}
 --- !u!1 &1646541640735296
 GameObject:
   m_ObjectHideFlags: 0
@@ -4914,7 +4930,7 @@ BoxCollider:
   m_GameObject: {fileID: 1650539954155832}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 15.000004, y: 20.7, z: 13.000003}
   m_Center: {x: 0, y: 4.3, z: 0}

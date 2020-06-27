@@ -12,6 +12,9 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] GameObject hitEffect = null;
     [SerializeField] GameObject deathEffect = null;
+
+    [SerializeField] GameObject endEffect = null;
+
     [SerializeField] int hitsToDie = 6;
     
     Transform parent;
@@ -38,7 +41,20 @@ public class Enemy : MonoBehaviour
             
             yield return new WaitForSeconds(dwellingTime);
         }
+        SelfDestroy();
+
+        
             
+    }
+
+    private void SelfDestroy()
+    {
+        if (endEffect != null)
+        {
+            GameObject fx = Instantiate(endEffect, transform.position, Quaternion.identity);
+            fx.transform.parent = parent;
+        }
+        Destroy(this.gameObject);
     }
 
     private void OnParticleCollision(GameObject other)
@@ -49,6 +65,7 @@ public class Enemy : MonoBehaviour
             ProccesDeath();
         }
     }
+   
 
     private void ProcessHit()
     {

@@ -94,7 +94,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - Color_66623B53: {r: 0, g: 0, b: 0, a: 0}
-    - Color_EC650CAE: {r: 0.1002772, g: 1.39461, b: 1.741176, a: 0}
+    - Color_EC650CAE: {r: 0.6728974, g: 0, b: 0, a: 0}
     - Fernel_Color: {r: 1.2698191, g: 0.56479937, b: 0.0778663, a: 0}
     - _BaseColor: {r: 0, g: 0.33823538, b: 1, a: 1}
     - _Color: {r: 0, g: 0.33823538, b: 1, a: 1}

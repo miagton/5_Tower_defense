@@ -66,7 +66,7 @@ public class TowerController : MonoBehaviour
         float distanceToEnemy = Vector3.Distance(transform.position, targetEnemy.position);
         if (distanceToEnemy <= towerRange)
         {
-            objectToSpin.LookAt(targetEnemy);
+            objectToSpin.LookAt(targetEnemy.position+Vector3.up*2);
             EnableEmission(true);
 
         }
