@@ -92,14 +92,17 @@ public class Enemy : MonoBehaviour
     }
     private void ProccesDeath()
     {
-        audioSource.PlayOneShot(deathSound);
+       // audioSource.PlayOneShot(deathSound);
         
         if (deathEffect != null)
         {
            
             CreateEffect(deathEffect);
         }
-         Destroy(gameObject,0.4f);
+        AudioSource.PlayClipAtPoint(deathSound, Camera.main.transform.position);
+         Destroy(gameObject);
+      
+        
        // ResetEnemy();
     }
 
