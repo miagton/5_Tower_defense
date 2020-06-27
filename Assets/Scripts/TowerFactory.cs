@@ -7,34 +7,51 @@ public class TowerFactory : MonoBehaviour
     [SerializeField] TowerController[] towers = null;
     [SerializeField] int towerLimit = 3;
 
-    int towersCreated = 0;
+    Queue<TowerController> towerControllers = new Queue<TowerController>();
+    
    
     public void AddTower(TowerHolder baseHolder)
     {
-        if (towersCreated < towerLimit)
+        var towers = towerControllers.Count;
+        if (towers < towerLimit)
         {
             CreateNewTower(baseHolder);
+            
 
            
 
         }
         else 
         {
-            MoveExistingTower();
+            MoveExistingTower(baseHolder);
         }
     }
 
-    private static void MoveExistingTower()
+    private  void MoveExistingTower(TowerHolder baseHolder)
     {
-        print("cant place more towers");
+        //take bottom tower off que
+       var oldTower= towerControllers.Dequeue();
+        //set the placable flags
+        oldTower.baseHolder.isOccupiedByTower = false;
+       // baseHolder.isOccupiedByTower = false;
+        //set the  base towerholder
+        oldTower.baseHolder = baseHolder;
+        //move 
+        oldTower.transform.position = baseHolder.transform.position;
+        //set old tower to the top of the queue
+        towerControllers.Enqueue(oldTower);
     }
 
     private void CreateNewTower(TowerHolder baseHolder)
     {
-        towersCreated++;
+        
         int i = Random.Range(0, towers.Length);
         TowerController newTower = Instantiate(towers[i], baseHolder.transform.position, Quaternion.identity);
         newTower.transform.parent = this.transform;
         baseHolder.isOccupiedByTower = true;
+
+        newTower.baseHolder = baseHolder;
+        towerControllers.Enqueue(newTower);
+        
     }
 }

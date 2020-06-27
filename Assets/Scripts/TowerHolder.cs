@@ -18,6 +18,6 @@ public class TowerHolder : MonoBehaviour
             
         }
        
-        Debug.Log("Placing Tower at: " + gameObject.name);
+        
     }
 }

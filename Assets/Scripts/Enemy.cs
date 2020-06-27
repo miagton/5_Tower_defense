@@ -30,7 +30,7 @@ public class Enemy : MonoBehaviour
 
     IEnumerator FollowPath(List<WayPoint> path)
     {
-            print("Starting patrol!");
+            
        
         foreach (WayPoint block in path)
         {
@@ -38,7 +38,7 @@ public class Enemy : MonoBehaviour
             
             yield return new WaitForSeconds(dwellingTime);
         }
-            print("Walking finished!");
+            
     }
 
     private void OnParticleCollision(GameObject other)

@@ -13,6 +13,7 @@ public class TowerController : MonoBehaviour
     //state
     Transform targetEnemy;
 
+    public TowerHolder baseHolder;//what the tower is tsanding on
     void Update()
     {
         SetTargetEnemy();
