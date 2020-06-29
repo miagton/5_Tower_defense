@@ -5,11 +5,21 @@ using UnityEngine;
 public class TowerFactory : MonoBehaviour
 {
     [SerializeField] TowerController[] towers = null;
-    [SerializeField] int towerLimit = 3;
+    [SerializeField] int towerLimit = 1;
+    [SerializeField] bool IsRandomTower = false;
 
     Queue<TowerController> towerControllers = new Queue<TowerController>();
     
-   
+    
+   public int GetTurretLimit()
+    {
+        return towerLimit;
+    }
+    public void IncreaseTowerLimit()
+    {
+        towerLimit++;
+    }
+
     public void AddTower(TowerHolder baseHolder)
     {
         var towers = towerControllers.Count;
@@ -45,9 +55,15 @@ public class TowerFactory : MonoBehaviour
 
     private void CreateNewTower(TowerHolder baseHolder)
     {
-        
-        int i = Random.Range(0, towers.Length);
-        TowerController newTower = Instantiate(towers[i], baseHolder.transform.position, Quaternion.identity);
+        TowerController newTower;
+        if (IsRandomTower)
+        {
+         int i = Random.Range(0, towers.Length);
+         newTower = Instantiate(towers[i], baseHolder.transform.position, Quaternion.identity);
+
+        }
+        else
+        newTower = Instantiate(towers[0], baseHolder.transform.position, Quaternion.identity);
         newTower.transform.parent = this.transform;
         baseHolder.isOccupiedByTower = true;
 

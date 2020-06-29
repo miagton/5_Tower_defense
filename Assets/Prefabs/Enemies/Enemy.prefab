@@ -63,7 +63,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3fcd2bbd338d6042a38b7153a29afe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dwellingTime: 0.2
+  dwellingTime: 1
   hitEffect: {fileID: 8681779306352170300, guid: 9df4324be4283a34fa04ea2c920e8897,
     type: 3}
   deathEffect: {fileID: 6378254251037514928, guid: 356ffa2f0efddbd41a2e83c0bd30f212,
